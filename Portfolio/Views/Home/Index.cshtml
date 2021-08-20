@@ -1,0 +1,93 @@
+﻿@model Portfolio.Models.Contact
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (ViewBag.SuccessStatus == true)
+{
+    <div class="alert alert-success m-3" role="alert">
+        Thank You! I will get back to you as Soon as Possible
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>}
+<header class="inverse">
+    <div class="container">
+        <h1>Hello, my name is <span class="accent-text">Obiora</span></h1>
+        <img src="~/img/Obiora.jpg" alt="portrait of Obiora">
+    </div>
+</header>
+
+<main>
+    <div class="splitter">
+        <section class="about-me">
+            <div class="container">
+                <h2>I am a <span class="accent-text">.NET software engineer</span></h2>
+                <p>I am committed to building high quality and easily maintainable software solutions.</p>
+                <p>A graduate of Electrical/Electronic Engineering from the Federal University of Technology Owerri.</p>
+                <p>Currently a software engineer with Decagon Institute.</p>
+                <p>Phone Number: 08102767433</p>
+                <p>Email: obioramaduakor@gmail.com</p>
+                <a href="https://www.linkedin.com/in/obiora-maduakor-799896a8/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BkWyBxywMRMuKoVwg2DOnOQ%3D%3D" class="btn">My LinkedIn Profile</a>
+            </div>
+        </section>
+
+        <section class="articles inverse">
+            <div class="container">
+                <h2>One of my latest<span class="accent-text">applications</span></h2>
+                <article>
+                    <h3>Animal Farm App</h3>
+                    <p class="small-text">Released by <span class="name">Obiora and friends</span> on <time datetime="2021-07-19">July 19, 2021</time></p>
+                    <p>This is a solution developed to facilitate the purchase and delivery of quality livestock. Check it out <a href="http://livestockfarms.herokuapp.com/">here</a></p>
+                    <a href="https://github.com/ObioraM" class="btn">My GitHub Profile</a>
+
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <section class="portfolio">
+        <div class="container">
+            <h2>More of <span class="accent-text">my skills</span></h2>
+            <p>C#, ASP.NET Core, CSS, HTML, Javascript, SQL</p>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form asp-action="Index" method="Post">
+                <div class="form-group">
+                    <label asp-for="@Model.FullName"></label>
+                    <input class="form-control" asp-for="@Model.FullName" />
+                    <span asp-validation-for="@Model.FullName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Email"></label>
+                    <input class="form-control" asp-for="@Model.Email" />
+                    <span asp-validation-for="@Model.Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.PhoneNumber"></label>
+                    <input class="form-control" asp-for="@Model.PhoneNumber" />
+                    <span asp-validation-for="@Model.PhoneNumber"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Message"></label>
+                    <textarea class="form-control" asp-for="@Model.Message" placeholder="Enter your message here"></textarea>
+                    <span asp-validation-for="@Model.Message"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success"> Submit </button>
+                </div>
+            </form>
+        </div>
+
+        @*server side validation*@
+        @section Scripts{
+            @{
+                <partial name="_ValidationScriptsPartial" /> }
+        }
+    </section>
+</main>
+
